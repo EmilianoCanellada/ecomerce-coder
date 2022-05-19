@@ -65,6 +65,7 @@
             productoID = producto.querySelector('a').getAttribute('data-id'); //almacenar valor en localstore
         }
         this.eliminarProductoLocalStorage(productoID);
+        this.calcularTotal();
     }
     
     //creo la tabla para vaciar productos
@@ -130,12 +131,35 @@
             listaProductos.appendChild(row); 
         });
     }
+
+    leerLocalStorageCompra(){
+        let productosLS;
+        productosLS = this.obtenerProductosLocalStorage();
+        productosLS.forEach(function(producto){
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>
+                    <img src="${producto.imagen}" width=100> 
+                </td>
+                <td>${producto.titulo}</td>
+                <td>${producto.precio}</td>
+                <td>
+                    <input type="number" class="form-control" cantidad" min="1" value=${producto.cantidad}>
+                </td>
+                <td>${producto.precio * producto.cantidad}</td>
+                <td>
+                    <a href="#" class="borrar-producto fas fa-times-circle" style="font-size:30px" data-id="${producto.id}"></a>
+                </td>
+            `;
+            listaCompra.appendChild(row); 
+        });
+    }
     
     vaciarLocalStorage(){
         LocalStorage.clear();
     }
 
-    procesarPedido(e){
+    procesarPedido(e){ 
         e.preventDefault();
         if(this.obtenerProductosLocalStorage().length === 0){
             Swal.fire({
@@ -150,5 +174,21 @@
             location.href ='compra.html';
         }
         
+    }
+
+    calcularTotal(){
+        let productoLS;
+        let total = 0, subtotal = 0, igv = 0;
+        productoLS = this.obtenerProductosLocalStorage();
+        for(let i = 0; i < productoLS.length; i++){
+            let element = Number (productoLS[i].precio * productoLS[i].cantidad);
+            total = total + element;
+        }
+        igv = parseFloat(total * 0.18).toFixed(2); //2 decimales
+        subtotal = parseFloat(total-igv).toFixed(2);
+
+        document.getElementById('subtotal').innerHTML = "S/. " + subtotal;
+        document.getElementById('igv').innerHTML = "S/. " + igv;
+        document.getElementById('total').innerHTML = "S/. " + total.toFixed(2);
     }
 }

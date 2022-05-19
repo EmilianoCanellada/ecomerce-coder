@@ -10,6 +10,7 @@
     <script src="js/popper.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     
+    <!-- ANADI SWETALERT Y LE DI USO PARA QUE LAS ALERTAS SE VEAN MAS BONITAS -->
     <link rel="stylesheet" href="css/sweetalert2.min.css">
 
     <title>Carrito Compras en JavaScript</title>
@@ -38,18 +39,18 @@
             <div class="row mt-3">
                 <div class="col">
                     <h2 class="d-flex justify-content-center mb-3">Realizar Compra</h2>
-                    <form id="procesar-pago" action="#">
+                    <form id="procesar-pago" action="#" method="POST">
                         <div class="form-group row">
                             <label for="cliente" class="col-12 col-md-2 col-form-label h2">Cliente :</label>
                             <div class="col-12 col-md-10">
                                 <input type="text" class="form-control" id="cliente"
-                                    placeholder="Ingresa nombre cliente" required>
+                                    placeholder="Ingresa nombre cliente" name="destinatario">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="email" class="col-12 col-md-2 col-form-label h2">Correo :</label>
                             <div class="col-12 col-md-10">
-                                <input type="email" class="form-control" id="correo" placeholder="Ingresa tu correo" required>
+                                <input type="email" class="form-control" id="correo" placeholder="Ingresa tu correo" name="cc_to">
                             </div>
                         </div>
 
@@ -103,7 +104,7 @@
                                 <a href="index.html" class="btn btn-info btn-block">Seguir comprando</a>
                             </div>
                             <div class="col-xs-12 col-md-4">
-                                <a href="" class="btn btn-success btn-block" id="procesar-compra">Realizar compra</a>
+                                <button href="#" class="btn btn-success btn-block" id="procesar-compra">Realizar compra</button>
                             </div>
                         </div>
                     </form>
@@ -118,14 +119,13 @@
     </main>
 
 
-
-
-
     </div>
 
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <!-- ANADI SWETALERT Y LE DI USO PARA QUE LAS ALERTAS SE VEAN MAS BONITAS -->
     <script src="js/sweetalert2.min.js"></script>
+
     <script src="js/carrito.js"></script>
     <script src="js/compra.js"></script>
 
