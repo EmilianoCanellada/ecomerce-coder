@@ -25,6 +25,7 @@
                 productosLS = productoLS.id; //el producto que seleccione con el que ya tenemos lo vamos almacenar para luego comparar
             }
         });
+        /*
         if(productosLS === infoProducto.id){
             Swal.fire({
                 type: 'info',
@@ -36,7 +37,19 @@
         }
         else{
             this.insertarCarrito(infoProducto)
-        }
+        }*/
+   /* ------------------------------------------------
+                      OPERADOR TERNARIO
+      ------------------------------------------------  */ 
+            (productosLS === infoProducto.id) ? Swal.fire({
+                type: 'info',
+                title: 'Oops...',
+                text: 'El producto ya esta agregado',
+                timer: 1000,
+                showConfirmButton: false
+            }) : this.insertarCarrito(infoProducto);
+    
+
     }
     insertarCarrito(producto){ //creo el metodo
         //creo la tabla para insertar los productos
@@ -82,12 +95,13 @@
     guardarProductosLocalStorage(producto){
         let productos;
         //obtener valores de LS, si no hay crea en vacio y si lo hay va agregar el producto al carrito
-        productos = this.obtenerProductosLocalStorage(); productos.push(producto);
+        productos = this.obtenerProductosLocalStorage(); 
+        productos.push(producto);
         localStorage.setItem('productos', JSON.stringify(productos));
     }
 
     //creo la tabla para obtener productos del LS
-    obtenerProductosLocalStorage(){
+    /*obtenerProductosLocalStorage(){
         let productoLS;
 
         if(localStorage.getItem('productos') === null){
@@ -96,6 +110,18 @@
         else{
             productoLS = JSON.parse(localStorage.getItem('productos'));
         }
+        return productoLS;
+    }*/
+
+    
+       /* ------------------------------------------------
+                      OPERADOR TERNARIO
+      ------------------------------------------------  */ 
+
+    obtenerProductosLocalStorage(){
+        let productoLS; 
+        
+        (localStorage.getItem('productos') === null) ? productoLS = [] : productoLS = JSON.parse(localStorage.getItem('productos'));
         return productoLS;
     }
 
