@@ -1,0 +1,13 @@
+#fraseTitulo{
+    color: rgb(173, 215, 200);
+}
+
+.frase{
+    border: solid 1px;
+    color: rgb(173, 215, 200);
+    text-align: center;
+}
+
+#fraseBtn{
+    background-color: rgb(173, 215, 200);
+}

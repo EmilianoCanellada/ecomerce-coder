@@ -25,21 +25,8 @@
                 productosLS = productoLS.id; //el producto que seleccione con el que ya tenemos lo vamos almacenar para luego comparar
             }
         });
-        /*
-        if(productosLS === infoProducto.id){
-            Swal.fire({
-                type: 'info',
-                title: 'Oops...',
-                text: 'El producto ya esta agregado',
-                timer: 1000,
-                showConfirmButton: false
-            })
-        }
-        else{
-            this.insertarCarrito(infoProducto)
-        }*/
    /* ------------------------------------------------
-                      OPERADOR TERNARIO
+                      OPERADOR TERNARIO 1
       ------------------------------------------------  */ 
             (productosLS === infoProducto.id) ? Swal.fire({
                 type: 'info',
@@ -99,23 +86,8 @@
         productos.push(producto);
         localStorage.setItem('productos', JSON.stringify(productos));
     }
-
-    //creo la tabla para obtener productos del LS
-    /*obtenerProductosLocalStorage(){
-        let productoLS;
-
-        if(localStorage.getItem('productos') === null){
-            productoLS = [];
-        }
-        else{
-            productoLS = JSON.parse(localStorage.getItem('productos'));
-        }
-        return productoLS;
-    }*/
-
-    
        /* ------------------------------------------------
-                      OPERADOR TERNARIO
+                      OPERADOR TERNARIO 2
       ------------------------------------------------  */ 
 
     obtenerProductosLocalStorage(){
